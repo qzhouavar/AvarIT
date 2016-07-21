@@ -1,0 +1,187 @@
+@model AvarIT.Models.InventoryViewModels.EmployeeComputerCaseViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="ComputerCases" asp-action="Index" method="get">
+    <p>
+        <select asp-for="userId" class="form-control" asp-items="Model.users">
+            // create a dropdown list
+            <option value="">All</option>
+        </select>      
+    </p>
+    <input type="submit" value="Filter" class="btn btn-default"/>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Assigned User", "Index", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+              
+                <th>
+                    Brand
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].CPUFrequency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].CPUType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].HDDSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].LANMAC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].LaptopScreenSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].MachineName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].MemorySize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].ModelNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].ModelSeries)
+                </th>
+      
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].OEMLicense)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].OEMOperatingSystem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].OfficeLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].OrderNo)
+                </th>
+                <th>
+                    @Html.ActionLink("Purchase Date", "Index", new { sortOrder = ViewBag.DateSortParm }) 
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].Retired)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].UpgradeLicense)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].UpgradedTo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].WLANMAC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.computerCases[0].Warranty)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.computerCases)
+            {
+                <tr>
+                    <td>
+
+                       
+                        @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPUFrequency)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPUType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HDDSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LANMAC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LaptopScreenSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MachineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemorySize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModelNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModelSeries)
+                    </td>
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OEMLicense)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OEMOperatingSystem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficeLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Retired)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SerialNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpgradeLicense)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpgradedTo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WLANMAC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Warranty)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
